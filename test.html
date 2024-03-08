@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+  @font-face {
+  font-family: Gotham;
+  src: url("./GothamMedium_1.ttf");
+}
+
+h1 {
+  display: flex;
+  font-family: Gotham;
+  white-space: nowrap; /* Prevent line breaks */
+  overflow: hidden;    /* Hide overflow content */
+  text-overflow: ellipsis;
+}
+
+.main_box {
+  width: 70vw;
+  height: 95vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+}
+
+.box_2 {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box_1 {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid_layout {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: baseline;
+  display: grid;
+  grid-template-rows: repeat(2, 47%);
+  grid-template-columns: repeat(2, 45%);
+  gap: 48px;
+}
+
+.grid_image {
+  width: 88%;
+  height: 88%;
+  border-radius: 4%;
+  position: relative;
+}
+
+figcaption {
+  display: flex;
+  position: relative;
+  top: -12vh;
+  left: 30%;
+  z-index: 100;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+  color: white;
+}
+
+figure {
+  text-align: center; /* Center the content within the figure */
+  position: relative;
+}
+
+.color_change {
+  color: yellow;
+}
+
+.second_line_1 {
+  display: flex;
+  position: relative;
+  left: -35%;
+  font-family: Gotham;
+}
+
+.second_line_2 {
+  display: flex;
+  position: relative;
+  left: -50%;
+  font-family: Gotham;
+}
+
+@keyframes boxAnimation {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  50% {
+    width: 20vw;
+    height: 25vh;
+    opacity: 0.5;
+    transform: translateY(0);
+  }
+  100% {
+    width: 27vw;
+    height: 38vh;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animated-box {
+  position: absolute !important;
+  bottom: 2vw;
+  left: 2vw;
+  width: 0;
+  height: 0;
+  background-color: rgb(196, 100, 100);
+  overflow: hidden;
+  border-radius: 20px;
+  z-index: 120;
+  transition: all 0.3s ease-in-out;
+}
+
+.animated-box.active {
+  opacity: .9;
+  width: 90%;
+  height: 90%;
+  transform: translateY(0);
+  z-index: 130; /* Increased z-index to overlap the image */
+}
+
+.text {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-family: Gotham;
+  font-size: 18px;
+  font-weight: bold;
+  animation: Animation 2s ease-in-out;
+  white-space: nowrap; /* Prevent line breaks */
+  overflow: hidden;    /* Hide overflow content */
+  text-overflow: ellipsis;
+}
+
+.text2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-family: Gotham;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 10px !important;
+  font-weight: 500;
+  animation: Animation 2s ease-in-out infinite;
+  white-space: nowrap; /* Prevent line breaks */
+  overflow: hidden;    /* Hide overflow content */
+  text-overflow: ellipsis;
+}
+
+@keyframes Animation {
+  0% {
+    font-size: 0;
+  }
+  50% {
+    font-size: 9px;
+  }
+  100% {
+    font-size: 18px;
+  }
+}
+.blue-color{
+  color: rgb(14, 122, 216);
+}
+@media only screen and (max-width: 768px) {
+  .main_box {
+    width: 90vw;
+    
+  }
+
+  .box_2 {
+    height: auto;
+  }
+
+  .grid_layout {
+    grid-template-rows: repeat(2, auto);
+    grid-template-columns: repeat(1, 100%);
+  }
+
+  .grid_image {
+    width: 100%;
+    height: auto;
+  }
+
+  .figcaption {
+    top: -8vh;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .second_line_1,
+  .second_line_2 {
+    left: 0%;
+  }
+
+  .animated-box,
+  .animated-box_2,
+  .animated-box_3,
+  .animated-box_4 {
+    bottom: 5%;
+    left: 0%;
+  }
+  .animated-box.active {
+    opacity: .9;
+    width: 97%;
+    height: 97%;
+    transform: translateY(0);
+    z-index: 130; /* Increased z-index to overlap the image */
+  }
+ 
+}
+
+  </style>
+</head>
+
+<body>
+  <div class='main_box'>
+    <div class='box_1'>
+      <h1> <div class='blue-color'>Why</div> &nbsp;Choose Us</h1>
+    </div>
+    <div class='box_2'>
+      <section class="grid_layout">
+        <figure onmouseover="handleMouseEnter(1)" onmouseout="handleMouseLeave()">
+          <img src="Picture1.png" alt=' ' class='grid_image' />
+          <figcaption> Holistic <div class='color_change'>&nbsp; Development</div></figcaption>
+          <div id="animated-box-1" class="animated-box">
+            <h2 class="text"> Holistic Development</h2>
+            <h3 class='text2'> Right Mix of Curricular <br />and Co-Curricular Activities.</h3>
+          </div>
+        </figure>
+        <figure onmouseover="handleMouseEnter(2)" onmouseout="handleMouseLeave()">
+          <img src="Picture2.png" alt=' ' class='grid_image' />
+          <figcaption><div class='color_change'>Proven</div> &nbsp;and &nbsp;<div class='color_change'>Tested</div><div class='second_line_1'><br />Centralized Curriculum</div></figcaption>
+          <div id="animated-box-2" class="animated-box">
+            <h2 class="text"> Proven and Tested <br /> Centralized Curriculum</h2>
+            <h3 class='text2'> CBSE school with balanced traditional &  <br />contemporary curriculum to foster<br />growth in all its students..</h3>
+          </div>
+        </figure>
+        <figure onmouseover="handleMouseEnter(3)" onmouseout="handleMouseLeave()">
+          <img src="Picture3.png" alt=' ' class='grid_image' />
+          <figcaption><div class='color_change'> Innovative</div> &nbsp; and <p class='color_change'>&nbsp; challenging</p>
+            <div class='second_line_2'>  <br />learning Methodologies</div></figcaption>
+          <div id="animated-box-3" class="animated-box">
+            <h2 class="text"> Innovative and Challenging<br />learning Methodologies</h2>
+            <h3 class='text2'> Facilitate excellence through<br />critical thinking and <br /> profound learning. </h3>
+          </div>
+        </figure>
+        <figure onmouseover="handleMouseEnter(4)" onmouseout="handleMouseLeave()">
+          <img src="Picture4.png" alt=' ' class='grid_image' />
+          <div id="animated-box-4" class="animated-box">
+            <h2 class="text"> Faculty Enrichment Program</h2>
+            <h3 class='text2'> Regular teacher training <br /> and curriculum workshops</h3>
+          </div>
+        </figure>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    const animatedBoxes = [null, null, null, null];
+
+    function handleMouseEnter(boxNumber) {
+      animatedBoxes[boxNumber - 1] = true;
+      updateAnimatedBox(boxNumber);
+    }
+
+    function handleMouseLeave() {
+      animatedBoxes.fill(null);
+      updateAnimatedBox();
+    }
+
+    function updateAnimatedBox(activeBox) {
+      for (let i = 1; i <= animatedBoxes.length; i++) {
+        const animatedBox = document.getElementById(`animated-box-${i}`);
+        if (animatedBoxes[i - 1] && activeBox === i) {
+          animatedBox.classList.add('active');
+        } else {
+          animatedBox.classList.remove('active');
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>
